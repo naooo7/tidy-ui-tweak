@@ -17,3 +17,5 @@
 - [x] Profile: editable name, avatar, tagline (persisted)
 - [x] Home reflects profile + institution instantly
 - [x] Dark base black/charcoal with institution accents
+- [x] Final compact Home polish for Today’s Focus, Needs Review, and This Week
+- [ ] Verify final Home polish at 360px, 390px, 430px, desktop, overflow, interactions, and console

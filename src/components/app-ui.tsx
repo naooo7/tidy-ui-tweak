@@ -27,7 +27,7 @@ export function ProgressBar({ value }: { value: number }) {
 }
 
 export function Metric({ label, value }: { label: string; value: string | number }) {
-  return <div><p className="text-sm text-muted-foreground">{label}</p><p className="mt-1 font-display text-2xl font-bold text-foreground">{value}</p></div>;
+  return <div className="min-w-0"><p className="truncate text-xs text-muted-foreground sm:text-sm">{label}</p><p className="mt-0.5 truncate font-display text-xl font-bold text-foreground sm:text-2xl">{value}</p></div>;
 }
 
 export function MiniLine({ values, height = 100 }: { values: number[]; height?: number }) {
@@ -43,11 +43,11 @@ export type TrendDatum = { label: string; value: number | null };
 export function TrendChart({ data, label, unit = "", compact = false }: { data: TrendDatum[]; label: string; unit?: string; compact?: boolean }) {
   const populated = data.filter((point) => point.value !== null);
   if (populated.length === 0) {
-    return <div className={cn("flex items-center justify-center rounded-xl bg-secondary/55 px-6 text-center text-sm text-muted-foreground", compact ? "h-28 sm:h-32" : "h-48")}>Your chart will appear after you complete some questions.</div>;
+    return <div className={cn("flex items-center justify-center rounded-xl bg-secondary/55 px-4 text-center text-sm text-muted-foreground", compact ? "h-16 sm:h-20" : "h-48")}>Your chart will appear after you complete some questions.</div>;
   }
   const max = Math.max(1, ...populated.map((point) => point.value ?? 0));
   return <div className="overflow-x-auto pb-1" aria-label={label} role="img">
-    <div className={cn("flex min-w-[30rem] items-end gap-1.5 border-b border-border px-1", compact ? "h-28 pt-4 sm:h-32" : "h-48 pt-8")}>
+    <div className={cn("flex items-end gap-1.5 border-b border-border px-1", compact ? "h-16 pt-2 sm:h-20" : "h-48 min-w-[30rem] pt-8")}>
       {data.map((point, index) => {
         const value = point.value ?? 0;
         return <div key={`${point.label}-${index}`} className="group flex h-full min-w-2 flex-1 items-end" title={`${point.label}: ${point.value === null ? "No activity" : `${point.value}${unit}`}`}>
